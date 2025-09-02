@@ -24,49 +24,54 @@ export default function Home() {
   } | null>(null);
 
   const calcularMargens = () => {
-    const larguraNum = parseFloat(largura.replace(",", "."));
-    const alturaNum = parseFloat(altura.replace(",", "."));
-    const esquerda = parseFloat(margens.esquerda.replace(",", "."));
-    const direita = parseFloat(margens.direita.replace(",", "."));
-    const superior = parseFloat(margens.superior.replace(",", "."));
-    const inferior = parseFloat(margens.inferior.replace(",", "."));
+  const larguraNum = parseFloat(largura.replace(",", "."));
+  const alturaNum = parseFloat(altura.replace(",", "."));
+  const esquerda = parseFloat(margens.esquerda.replace(",", "."));
+  const direita = parseFloat(margens.direita.replace(",", "."));
+  const superior = parseFloat(margens.superior.replace(",", "."));
+  const inferior = parseFloat(margens.inferior.replace(",", "."));
 
-    if (
-      isNaN(larguraNum) ||
-      isNaN(alturaNum) ||
-      isNaN(esquerda) ||
-      isNaN(direita) ||
-      isNaN(superior) ||
-      isNaN(inferior)
-    ) {
-      alert("Por favor, preencha todos os campos com números válidos.");
-      return;
-    }
+  if (
+    isNaN(larguraNum) ||
+    isNaN(alturaNum) ||
+    isNaN(esquerda) ||
+    isNaN(direita) ||
+    isNaN(superior) ||
+    isNaN(inferior)
+  ) {
+    alert("Por favor, preencha todos os campos com números válidos.");
+    return;
+  }
 
-    if (larguraNum === 19 && alturaNum === 25) {
-      alert("As dimensões já são 19x25, nenhuma conversão necessária!");
-      return;
-    }
+  if (larguraNum === 19 && alturaNum === 25) {
+    alert("As dimensões já são 19x25, nenhuma conversão necessária!");
+    return;
+  }
 
-    // Área útil original
-    const larguraUtil = larguraNum - esquerda - direita;
-    const alturaUtil = alturaNum - superior - inferior;
+  // Área útil original
+  const larguraUtil = larguraNum - esquerda - direita;
+  const alturaUtil = alturaNum - superior - inferior;
 
-    // Margens novas para 19x25
-    const novaEsquerda = (19 - larguraUtil) / 2;
-    const novaDireita = (19 - larguraUtil) / 2;
+  // Margens novas para 19x25
+  let novaEsquerda = (19 - larguraUtil) / 2;
+  let novaDireita = (19 - larguraUtil) / 2;
 
-    const diferencaAltura = 25 - alturaUtil;
-    // Aplicando proporção 70% em cima, 30% embaixo
-    const novaSuperior = diferencaAltura * 0.7;
-    const novaInferior = diferencaAltura * 0.3;
-    setResultado({
-      esquerda: novaEsquerda.toFixed(2),
-      direita: novaDireita.toFixed(2),
-      superior: novaSuperior.toFixed(2),
-      inferior: novaInferior.toFixed(2),
-    });
-  };
+  const diferencaAltura = 25 - alturaUtil;
+  let novaSuperior = diferencaAltura * 0.6;
+  let novaInferior = diferencaAltura * 0.4;
+
+  novaEsquerda = novaEsquerda < 0 ? 1 : novaEsquerda;
+  novaDireita = novaDireita < 0 ? 1 : novaDireita;
+  novaSuperior = novaSuperior < 0 ? 1 : novaSuperior;
+  novaInferior = novaInferior < 0 ? 1 : novaInferior;
+
+  setResultado({
+    esquerda: novaEsquerda.toFixed(2),
+    direita: novaDireita.toFixed(2),
+    superior: novaSuperior.toFixed(2),
+    inferior: novaInferior.toFixed(2),
+  });
+};
 
   const limparInputs = () => {
     setLargura("");
