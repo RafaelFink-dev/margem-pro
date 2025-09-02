@@ -57,8 +57,8 @@ export default function Home() {
   let novaDireita = (19 - larguraUtil) / 2;
 
   const diferencaAltura = 25 - alturaUtil;
-  let novaSuperior = diferencaAltura * 0.6;
-  let novaInferior = diferencaAltura * 0.4;
+  let novaSuperior = diferencaAltura * 0.7;
+  let novaInferior = diferencaAltura * 0.3;
 
   novaEsquerda = novaEsquerda < 0 ? 1 : novaEsquerda;
   novaDireita = novaDireita < 0 ? 1 : novaDireita;
