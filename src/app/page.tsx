@@ -55,9 +55,11 @@ export default function Home() {
     // Margens novas para 19x25
     const novaEsquerda = (19 - larguraUtil) / 2;
     const novaDireita = (19 - larguraUtil) / 2;
-    const novaSuperior = (25 - alturaUtil) / 2;
-    const novaInferior = (25 - alturaUtil) / 2;
 
+    const diferencaAltura = 25 - alturaUtil;
+    // Aplicando proporção 70% em cima, 30% embaixo
+    const novaSuperior = diferencaAltura * 0.7;
+    const novaInferior = diferencaAltura * 0.3;
     setResultado({
       esquerda: novaEsquerda.toFixed(2),
       direita: novaDireita.toFixed(2),
