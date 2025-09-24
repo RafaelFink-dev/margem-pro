@@ -64,7 +64,7 @@ export default function Home() {
   const diferencaAltura = 25 - alturaUtil;
     
   let novaSuperior = diferencaAltura - rodape;
-  let novaSuperior = 0;
+  novaSuperior = 0;
 
   novaEsquerda = novaEsquerda < 0 ? 1 : novaEsquerda;
   novaDireita = novaDireita < 0 ? 1 : novaDireita;
