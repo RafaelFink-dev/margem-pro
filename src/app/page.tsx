@@ -55,15 +55,20 @@ export default function Home() {
   // Margens novas para 19x25
   let novaEsquerda = (19 - larguraUtil) / 2;
   let novaDireita = (19 - larguraUtil) / 2;
+  let rodape = (19 - larguraUtil) / 2;
+
+    {/*const diferencaAltura = 25 - alturaUtil;
+  let novaSuperior = diferencaAltura * 0.7;
+  let novaInferior = diferencaAltura * 0.3;*/}
 
   const diferencaAltura = 25 - alturaUtil;
-  let novaSuperior = diferencaAltura * 0.7;
-  let novaInferior = diferencaAltura * 0.3;
+    
+  let novaSuperior = diferencaAltura - rodape;
 
   novaEsquerda = novaEsquerda < 0 ? 1 : novaEsquerda;
   novaDireita = novaDireita < 0 ? 1 : novaDireita;
   novaSuperior = novaSuperior < 0 ? 1 : novaSuperior;
-  novaInferior = novaInferior < 0 ? 1 : novaInferior;
+  novaInferior = rodape < 0 ? 1 : rodape;
 
   setResultado({
     esquerda: novaEsquerda.toFixed(2),
